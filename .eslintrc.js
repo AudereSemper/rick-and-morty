@@ -9,6 +9,8 @@ module.exports = {
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
+    project: './tsconfig.json',
+    tsconfigRootDir: './',
     ecmaFeatures: {
       jsx: true,
     },
@@ -17,15 +19,13 @@ module.exports = {
   },
   settings: {
     'import/resolver': {
-      node: {
-        paths: ['src'],
-        extensions: ['.js', '.jsx', '.ts', '.tsx'],
-      },
+      typescript: {},
     },
   },
   plugins: [
     'react',
     '@typescript-eslint',
+    'import',
   ],
   rules: {
     'no-use-before-define': 'off',
