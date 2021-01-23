@@ -1,17 +1,21 @@
 import {
-  configureStore, ThunkAction, Action, getDefaultMiddleware,
+  configureStore, ThunkAction, Action,
 } from '@reduxjs/toolkit';
+// eslint-disable-next-line import/no-unresolved
+// import { createBrowserHistory } from 'history';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './rootSaga';
 import reducer from './rootReducer';
 
+// const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
-const middleware = [...getDefaultMiddleware({ thunk: false }), sagaMiddleware];
+// const router = routerMiddleware(history);
 
 export const store = configureStore({
   reducer,
-  devTools: process.env.NODE_ENV !== 'production',
-  middleware,
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false })
+    .concat(sagaMiddleware),
+  // .concat(router),
 });
 
 sagaMiddleware.run(rootSaga);
