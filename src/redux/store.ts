@@ -1,21 +1,22 @@
 import {
   configureStore, ThunkAction, Action,
 } from '@reduxjs/toolkit';
+import { createBrowserHistory } from 'history';
 // eslint-disable-next-line import/no-unresolved
-// import { createBrowserHistory } from 'history';
+import { routerMiddleware } from 'connected-react-router';
 import createSagaMiddleware from 'redux-saga';
 import rootSaga from './rootSaga';
-import reducer from './rootReducer';
+import createRootReducer from './rootReducer';
 
-// const history = createBrowserHistory();
+export const history = createBrowserHistory();
 const sagaMiddleware = createSagaMiddleware();
-// const router = routerMiddleware(history);
+const router = routerMiddleware(history);
 
 export const store = configureStore({
-  reducer,
+  reducer: createRootReducer(history),
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ thunk: false })
-    .concat(sagaMiddleware),
-  // .concat(router),
+    .concat(sagaMiddleware)
+    .concat(router),
 });
 
 sagaMiddleware.run(rootSaga);
