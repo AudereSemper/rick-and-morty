@@ -7,9 +7,9 @@ const MenuVoices = {
     text: 'Home',
   },
   myCharacters: {
-    regexp: new RegExp('/myCharacters'),
-    value: 'myCharacters',
-    text: 'I miei personaggi preferiti',
+    regexp: new RegExp('/curiosity'),
+    value: 'curiosity',
+    text: 'Curiosità',
   },
   about: {
     regexp: new RegExp('/about'),

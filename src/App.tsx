@@ -1,17 +1,18 @@
 import React from 'react';
 import Home from 'src/app/pages/Home';
 import Header from 'src/app/components/Header';
-import { Switch, Route } from 'react-router';
+import { Switch, Route, Redirect } from 'react-router';
 
 function App() {
   return (
     <>
       <Header />
       <Switch>
-        <Route exact path="/">
+        <Redirect exact from="/" to="home" />
+        <Route exact path="/home">
           <Home />
         </Route>
-        <Route exact path="/myCharacters">
+        <Route exact path="/curiosity">
           <h1>
             myChars
           </h1>

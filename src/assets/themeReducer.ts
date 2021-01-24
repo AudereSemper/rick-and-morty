@@ -1,11 +1,11 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
-interface CounterState {
+interface ThemeState {
   theme: string;
 }
 
-const initialState: CounterState = {
+const initialState: ThemeState = {
   theme: 'light',
 };
 

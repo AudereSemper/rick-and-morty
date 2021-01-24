@@ -1,7 +1,10 @@
 /* eslint-disable import/no-duplicates */
-import { all } from 'redux-saga/effects';
+import { all, fork } from 'redux-saga/effects';
+import getRickAndMortyCharacters from 'src/app/pages/Home/homeSagas';
 // sagas here
 
 export default function* rootSaga() {
-  yield all([]);
+  yield all([
+    fork(getRickAndMortyCharacters),
+  ]);
 }
