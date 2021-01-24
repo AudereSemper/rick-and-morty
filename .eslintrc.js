@@ -49,6 +49,8 @@ module.exports = {
     {
       files: ['*.ts', '*.tsx'],
       rules: {
+        'react/prop-types': 'off',
+        'react/require-default-props': 'off',
         '@typescript-eslint/no-unused-vars': [2, { args: 'none' }],
       },
     },
