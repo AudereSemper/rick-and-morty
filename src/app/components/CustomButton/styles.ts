@@ -6,21 +6,18 @@ interface ButtonProps {
 }
 
 interface ButtonContainerProps {
-  withMarginTop?: boolean;
-  withBorder?: boolean;
   selected: boolean;
 }
 
 export const ButtonContainer = styled.div`
-    margin-top: ${(props: ButtonContainerProps) => (props.withMarginTop ? '50px' : '0')};
     display: flex;
     justify-content: center;
-    border: ${(props: ButtonContainerProps) => (props.withBorder ? '1px solid #EFEFEF' : '0')};
-    background-color: ${({ selected }) => (selected ? '#582828' : 'transparent')};
+    border-bottom: ${({ selected }: ButtonContainerProps) => (selected ? '5px solid green' : 'none')} ;
 `;
 
 export const Button = styled.button`
-  background-color: ${(props: ButtonProps) => (props.bgColor ? props.bgColor : '#1565c0')};
+  margin: 10px;
+  background-color: ${(props: ButtonProps) => (props.bgColor ? props.bgColor : 'transparent')};
   cursor: pointer;
   color: ${(props: ButtonProps) => (props.textColor ? props.textColor : 'black')};
   border-radius: 5px;

@@ -5,22 +5,45 @@ import { Switch, Route } from 'react-router';
 
 function App() {
   return (
-    <Switch>
+    <>
       <Header />
-      <Route exact path="/">
-        <Home />
-      </Route>
-      <Route exact path="/myCharacter">
-        <div>
-          myChars
-        </div>
-      </Route>
-      <Route exact path="/about">
-        <div>
-          about
-        </div>
-      </Route>
-    </Switch>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/myCharacters">
+          <h1>
+            myChars
+          </h1>
+          <h1>
+            myChars
+          </h1>
+          <h1>
+            myChars
+          </h1>
+          <h1>
+            myChars
+          </h1>
+          <h1>
+            myChars
+          </h1>
+          <h1>
+            myChars
+          </h1>
+          <h1>
+            myChars
+          </h1>
+          <h1>
+            myChars
+          </h1>
+        </Route>
+        <Route exact path="/about">
+          <h1>
+            about
+          </h1>
+        </Route>
+      </Switch>
+    </>
   );
 }
 

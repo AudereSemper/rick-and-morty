@@ -3,17 +3,17 @@
 const MenuVoices = {
   home: {
     regexp: new RegExp('/home'),
-    value: (_: any) => 'home',
+    value: 'home',
     text: 'Home',
   },
   myCharacters: {
     regexp: new RegExp('/myCharacters'),
-    value: (_: any) => '',
+    value: 'myCharacters',
     text: 'I miei personaggi preferiti',
   },
   about: {
     regexp: new RegExp('/about'),
-    value: (_: any) => 'about',
+    value: 'about',
     text: 'About',
   },
 };

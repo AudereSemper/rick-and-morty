@@ -1,7 +1,7 @@
 interface Voice {
   regexp: RegExp,
   text: string,
-  value: (x: any) => string
+  value: string
 }
 
 export default Voice;
