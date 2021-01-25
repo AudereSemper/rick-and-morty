@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
-import { StyledPaginateContainer } from './styles';
+import Card from 'src/app/components/Card';
+import { StyledPaginateContainer, StyledHomeContainer } from './styles';
 import { startFetchingRickAndMortyCharacter, setIsLoadingStatus } from './homeReducer';
 
 const Home = () => {
@@ -11,7 +12,6 @@ const Home = () => {
   const { info } = rickAndMortyCharacterData;
   const { pages } = info || {};
 
-  console.log('sei qua', info);
   useEffect(() => {
     dispatch(setIsLoadingStatus(true));
     dispatch(startFetchingRickAndMortyCharacter());
@@ -22,21 +22,24 @@ const Home = () => {
       {
         isLoading && rickAndMortyCharacterData.info ? 'Caricamento'
           : (
-            <StyledPaginateContainer>
-              <ReactPaginate
-                previousLabel="previous"
-                nextLabel="next"
-                breakLabel="..."
-                breakClassName="break-me"
-                pageCount={pages}
-                marginPagesDisplayed={2}
-                pageRangeDisplayed={5}
-              // onPageChange={this.handlePageClick}
-                containerClassName="pagination"
-                subContainerClassName="pages pagination"
-                activeClassName="active"
-              />
-            </StyledPaginateContainer>
+            <StyledHomeContainer>
+              <Card />
+              <StyledPaginateContainer>
+                <ReactPaginate
+                  previousLabel="previous"
+                  nextLabel="next"
+                  breakLabel="..."
+                  breakClassName="break-me"
+                  pageCount={pages}
+                  marginPagesDisplayed={2}
+                  pageRangeDisplayed={5}
+                  // onPageChange={this.handlePageClick}
+                  containerClassName="pagination"
+                  subContainerClassName="pages pagination"
+                  activeClassName="active"
+                />
+              </StyledPaginateContainer>
+            </StyledHomeContainer>
           )
       }
     </>

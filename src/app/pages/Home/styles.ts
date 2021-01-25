@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-// eslint-disable-next-line import/prefer-default-export
+export const StyledHomeContainer = styled.div``;
+
 export const StyledPaginateContainer = styled.div`
   .pagination {
     padding-top: 1rem;
     text-align: center;
   }
-
+  
   .pagination > ul {
       padding: 0;
       margin: 0;
@@ -19,6 +20,7 @@ export const StyledPaginateContainer = styled.div`
   .pagination li > a {
       padding: 0.5rem;
       margin: 1px;
+      color: blue;
       display: inline-block;
       cursor: pointer;
       background-color: #fff;
