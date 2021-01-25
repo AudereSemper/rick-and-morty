@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 export const StyledHomeContainer = styled.div``;
 
+export const StyledListContainer = styled.div``;
+
 export const StyledPaginateContainer = styled.div`
   .pagination {
     padding-top: 1rem;

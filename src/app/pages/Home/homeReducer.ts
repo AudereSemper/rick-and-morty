@@ -4,13 +4,17 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 interface HomeState {
   loading: boolean;
   isFetching: boolean;
-  data: []
+  data: [];
+  locationId: number | null;
+  locationName: string | null;
 }
 
 const initialState: HomeState = {
   loading: false,
   isFetching: true,
   data: [],
+  locationId: null,
+  locationName: null,
 };
 
 export const homeSlice = createSlice({
@@ -21,6 +25,12 @@ export const homeSlice = createSlice({
       state.loading = action.payload;
     },
     startFetchingRickAndMortyCharacter: (state) => state,
+    setRickAndMortyCharacterData: (state, action: PayloadAction<any>) => {
+      state.data = action.payload;
+    },
+    startFetchingRickAndMortyLocation: (state, action: PayloadAction<number>) => {
+      state.locationId = action.payload;
+    },
     setRickAndMortyCharacterData: (state, action: PayloadAction<any>) => {
       state.data = action.payload;
     },
