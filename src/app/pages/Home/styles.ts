@@ -5,7 +5,7 @@ export const StyledHomeContainer = styled.div``;
 export const StyledRow = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-between;
+  justify-content: center;
 `;
 
 export const StyledListContainer = styled.div`

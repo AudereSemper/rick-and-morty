@@ -27,7 +27,7 @@ const Home = () => {
     dispatch(startFetchingRickAndMortyCharacter());
   }, []);
 
-  const rowsWithContent: any = resultsReady && chunk(results, 5);
+  const rowsWithContent: any = resultsReady && chunk(results, 3);
 
   console.log('sei qua', rowsWithContent);
 

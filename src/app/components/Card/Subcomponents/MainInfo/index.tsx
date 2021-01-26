@@ -14,7 +14,7 @@ const MainInfo = ({
   type,
 }) => {
   const isDarkTheme = useSelector((state: any) => state.themeSliceReducer.theme) === 'dark';
-
+  console.log('sei qua', type);
   return (
     <>
       <Shape isDarkTheme={isDarkTheme}>
@@ -27,9 +27,9 @@ const MainInfo = ({
       <SubTitle isDarkTheme={isDarkTheme}>
         {species}
       </SubTitle>
-      <SubTitle isDarkTheme={isDarkTheme}>
+      {/* <SubTitle isDarkTheme={isDarkTheme}>
         {type}
-      </SubTitle>
+      </SubTitle> */}
     </>
   );
 };
