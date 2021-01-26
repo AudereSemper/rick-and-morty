@@ -6,7 +6,7 @@ interface HomeState {
   isFetching: boolean;
   data: [];
   locationId: number | null;
-  locationName: string | null;
+  location: [];
 }
 
 const initialState: HomeState = {
@@ -14,7 +14,7 @@ const initialState: HomeState = {
   isFetching: true,
   data: [],
   locationId: null,
-  locationName: null,
+  location: [],
 };
 
 export const homeSlice = createSlice({
@@ -31,12 +31,18 @@ export const homeSlice = createSlice({
     startFetchingRickAndMortyLocation: (state, action: PayloadAction<number>) => {
       state.locationId = action.payload;
     },
-    setRickAndMortyCharacterData: (state, action: PayloadAction<any>) => {
-      state.data = action.payload;
+    setRickAndMortyCharacterLocation: (state, action: PayloadAction<any>) => {
+      state.location = action.payload;
     },
   },
 });
 
-export const { setRickAndMortyCharacterData, startFetchingRickAndMortyCharacter, setIsLoadingStatus } = homeSlice.actions;
+export const {
+  setRickAndMortyCharacterData,
+  startFetchingRickAndMortyCharacter,
+  setIsLoadingStatus,
+  startFetchingRickAndMortyLocation,
+  setRickAndMortyCharacterLocation,
+} = homeSlice.actions;
 
 export default homeSlice.reducer;

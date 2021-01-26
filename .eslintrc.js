@@ -33,7 +33,7 @@ module.exports = {
     'import/no-extraneous-dependencies': ['error', { devDependencies: true }],
     'no-param-reassign': ['error', { props: true, ignorePropertyModificationsFor: ['draft'] }],
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx', '.tsx', 'ts'] }],
-    'max-len': ['error', { code: 130 }],
+    'max-len': ['error', { code: 140 }],
     'import/extensions': [
       'error',
       'ignorePackages',

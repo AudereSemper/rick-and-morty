@@ -2,7 +2,16 @@ import styled from 'styled-components';
 
 export const StyledHomeContainer = styled.div``;
 
-export const StyledListContainer = styled.div``;
+export const StyledRow = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+`;
+
+export const StyledListContainer = styled.div`
+  height: 90wh;
+  display: 'flex';
+`;
 
 export const StyledPaginateContainer = styled.div`
   .pagination {

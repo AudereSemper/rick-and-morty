@@ -2,11 +2,12 @@ import {
   takeEvery, all, call, put,
 } from 'redux-saga/effects';
 import { fetchWrapper } from '../../components/FetchWrapper/index';
-import { 
-  setIsLoadingStatus, 
-  setRickAndMortyCharacterData, 
+import {
+  setIsLoadingStatus,
+  setRickAndMortyCharacterData,
   startFetchingRickAndMortyCharacter,
   startFetchingRickAndMortyLocation,
+  setRickAndMortyCharacterLocation,
 } from './homeReducer';
 
 // eslint-disable-next-line import/prefer-default-export
@@ -22,12 +23,12 @@ function* getRickAndMortyCharacters() {
   }
 }
 
-function* getRickAndMortyLocationOrOrigin({ locationId }) {
+function* getRickAndMortyLocationOrOrigin(locationId) {
   const endPoint = `location/${locationId}`;
   try {
     const response = yield call(fetchWrapper, endPoint);
     yield put(setIsLoadingStatus(false));
-    yield put(setRickAndMortyLocation(response));
+    yield put(setRickAndMortyCharacterLocation(response));
   } catch (error) {
     // eslint-disable-next-line no-console
     console.log('error', error);
@@ -36,7 +37,7 @@ function* getRickAndMortyLocationOrOrigin({ locationId }) {
 
 export default function* root() {
   yield all([
-    takeEvery(startFetchingRickAndMortyLocation.type, getRickAndMortyLocationOrOrigin)
+    takeEvery(startFetchingRickAndMortyLocation.type, getRickAndMortyLocationOrOrigin),
     takeEvery(startFetchingRickAndMortyCharacter.type, getRickAndMortyCharacters),
   ]);
 }

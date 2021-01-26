@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
-import List from 'src/app//components/List/index';
+import List from 'src/app/components/List';
 import {
   StyledPaginateContainer,
   StyledHomeContainer,
   StyledListContainer,
+  StyledRow,
 } from './styles';
 import { startFetchingRickAndMortyCharacter, setIsLoadingStatus } from './homeReducer';
 
@@ -15,22 +16,37 @@ const Home = () => {
   const rickAndMortyCharacterData = useSelector((state: any) => state.homeSliceReducer.data);
   const { info } = rickAndMortyCharacterData;
   const { results } = rickAndMortyCharacterData;
+  const resultsReady = results !== undefined;
   const { pages } = info || {};
-  const readyToLoad = isLoading && rickAndMortyCharacterData.info && rickAndMortyCharacterData.results;
+  const Loading = isLoading && rickAndMortyCharacterData.info && rickAndMortyCharacterData.results;
+
+  const chunk = (arr, size) => Array.from({ length: Math.ceil(arr.length / size) }, (v, i) => arr.slice(i * size, i * size + size));
 
   useEffect(() => {
     dispatch(setIsLoadingStatus(true));
     dispatch(startFetchingRickAndMortyCharacter());
   }, []);
 
+  const rowsWithContent: any = resultsReady && chunk(results, 5);
+
+  console.log('sei qua', rowsWithContent);
+
   return (
     <>
       {
-        readyToLoad ? 'Caricamento'
+        Loading ? 'Caricamento'
           : (
             <StyledHomeContainer>
               <StyledListContainer>
-                <List list={results} />
+                {
+                  resultsReady ? rowsWithContent.map(
+                    (singleRow) => (
+                      <StyledRow>
+                        <List list={singleRow} />
+                      </StyledRow>
+                    ),
+                  ) : 'loading'
+                }
               </StyledListContainer>
               <StyledPaginateContainer>
                 <ReactPaginate
