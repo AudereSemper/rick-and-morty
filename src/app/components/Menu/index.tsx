@@ -9,7 +9,6 @@ import Voice from './types';
 const voices = [
   MenuVoices.home,
   MenuVoices.myCharacters,
-  MenuVoices.about,
 ];
 
 export default function Menu() {

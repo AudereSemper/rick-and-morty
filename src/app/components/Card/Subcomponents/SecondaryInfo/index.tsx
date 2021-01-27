@@ -6,6 +6,7 @@ import {
   SubTitle,
   StyledUnorderedList,
   StyledListItem,
+  TextContainer,
 } from '../../styles';
 
 const SecondaryInfo = ({
@@ -30,30 +31,32 @@ const SecondaryInfo = ({
 
   return (
     <>
-      <SubTitle isDarkTheme={isDarkTheme}>
-        Status:
-        {' '}
-        {status}
-      </SubTitle>
-      <SubTitle isDarkTheme={isDarkTheme}>
-        Gender:
-        {' '}
-        {gender}
-      </SubTitle>
-      <SubTitle isDarkTheme={isDarkTheme}>
-        Origin:
-        {' '}
-        {origin.name}
-      </SubTitle>
-      <SubTitle isDarkTheme={isDarkTheme} data-tip data-for="registerTip" isBold>
-        Hover here for episode
-      </SubTitle>
+      <TextContainer>
+        <SubTitle isDarkTheme={isDarkTheme}>
+          Status:
+          {' '}
+          {status}
+        </SubTitle>
+        <SubTitle isDarkTheme={isDarkTheme}>
+          Gender:
+          {' '}
+          {gender}
+        </SubTitle>
+        <SubTitle isDarkTheme={isDarkTheme}>
+          Origin:
+          {' '}
+          {origin.name}
+        </SubTitle>
+        <SubTitle isDarkTheme={isDarkTheme} data-tip data-for="registerTip" isBold>
+          Hover here for episode
+        </SubTitle>
 
-      <ReactTooltip id="registerTip" place="top" effect="solid">
-        <StyledUnorderedList>
-          {episodes && episodes.map((episodeInfo) => <StyledListItem key={episodeInfo.id}>{episodeInfo.name}</StyledListItem>)}
-        </StyledUnorderedList>
-      </ReactTooltip>
+        <ReactTooltip id="registerTip" place="top" effect="solid">
+          <StyledUnorderedList>
+            {episodes && episodes.map((episodeInfo) => <StyledListItem key={episodeInfo.id}>{episodeInfo.name}</StyledListItem>)}
+          </StyledUnorderedList>
+        </ReactTooltip>
+      </TextContainer>
     </>
   );
 };

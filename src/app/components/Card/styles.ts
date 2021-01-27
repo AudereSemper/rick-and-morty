@@ -37,6 +37,14 @@ export const Image = styled.div<{isDarkTheme: boolean, imageUrl: string}>`
   transform: rotate(-20deg);
 `;
 
+export const TextContainer = styled.div`
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+
 export const MainTitle = styled.h3<{isDarkTheme: boolean}>`
   font-size: 22px;
   color: ${({ isDarkTheme }) => (isDarkTheme ? 'white' : 'black')};

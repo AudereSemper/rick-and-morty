@@ -1,6 +1,7 @@
 import React from 'react';
 import Home from 'src/app/pages/Home';
 import Header from 'src/app/components/Header';
+import Curiosity from 'src/app/pages/Curiosity';
 import { Switch, Route, Redirect } from 'react-router';
 
 function App() {
@@ -13,35 +14,7 @@ function App() {
           <Home />
         </Route>
         <Route exact path="/curiosity">
-          <h1>
-            myChars
-          </h1>
-          <h1>
-            myChars
-          </h1>
-          <h1>
-            myChars
-          </h1>
-          <h1>
-            myChars
-          </h1>
-          <h1>
-            myChars
-          </h1>
-          <h1>
-            myChars
-          </h1>
-          <h1>
-            myChars
-          </h1>
-          <h1>
-            myChars
-          </h1>
-        </Route>
-        <Route exact path="/about">
-          <h1>
-            about
-          </h1>
+          <Curiosity />
         </Route>
       </Switch>
     </>
