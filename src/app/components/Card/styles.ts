@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const CardContainer = styled.div<{isDarkTheme: boolean}>`
   margin: 15px;
-  height: 450px;
+  height: 500px;
   width: 300px;
   box-shadow: ${({ isDarkTheme }) => (isDarkTheme ? '0 10px 20px white' : '0 10px 20px black')}; ;
   background-size: cover;
@@ -38,13 +38,15 @@ export const Image = styled.div<{isDarkTheme: boolean, imageUrl: string}>`
 `;
 
 export const MainTitle = styled.h3<{isDarkTheme: boolean}>`
+  font-size: 22px;
   color: ${({ isDarkTheme }) => (isDarkTheme ? 'white' : 'black')};
   margin-bottom: 10px;
 `;
 
-export const SubTitle = styled.p<{isDarkTheme: boolean}>`
+export const SubTitle = styled.p<{isDarkTheme: boolean, isBold?: boolean}>`
   padding-left: 30px;
   padding-right: 30px;
+  font-weight: ${({ isBold }) => (isBold ? 'bold' : 'normal')};
   color: ${({ isDarkTheme }) => (isDarkTheme ? 'white' : 'black')};
 `;
 

@@ -23,8 +23,9 @@ function* getRickAndMortyCharacters() {
   }
 }
 
-function* getRickAndMortyLocationOrOrigin(locationId) {
-  const endPoint = `location/${locationId}`;
+function* getRickAndMortyLocationOrOrigin(action) {
+  const { payload } = action;
+  const endPoint = `location/${payload}`;
   try {
     const response = yield call(fetchWrapper, endPoint);
     yield put(setIsLoadingStatus(false));

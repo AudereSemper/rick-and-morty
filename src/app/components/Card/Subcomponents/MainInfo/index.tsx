@@ -11,25 +11,26 @@ const MainInfo = ({
   image,
   name,
   species,
-  type,
+  location,
 }) => {
   const isDarkTheme = useSelector((state: any) => state.themeSliceReducer.theme) === 'dark';
-  console.log('sei qua', type);
   return (
     <>
       <Shape isDarkTheme={isDarkTheme}>
         <Image isDarkTheme={isDarkTheme} imageUrl={image} />
       </Shape>
-
       <MainTitle isDarkTheme={isDarkTheme}>
         {name}
       </MainTitle>
       <SubTitle isDarkTheme={isDarkTheme}>
         {species}
       </SubTitle>
-      {/* <SubTitle isDarkTheme={isDarkTheme}>
-        {type}
-      </SubTitle> */}
+      <SubTitle isDarkTheme={isDarkTheme} isBold>
+        Last know location:
+      </SubTitle>
+      <SubTitle isDarkTheme={isDarkTheme}>
+        {location.name}
+      </SubTitle>
     </>
   );
 };

@@ -18,7 +18,6 @@ const Card = ({ characterInfo }: IrickAndMortyCharacter) => {
     name,
     status,
     species,
-    type,
     gender,
     origin,
     location,
@@ -33,7 +32,6 @@ const Card = ({ characterInfo }: IrickAndMortyCharacter) => {
             status={status}
             gender={gender}
             origin={origin}
-            location={location}
             episode={episode}
           />
         )
@@ -41,8 +39,8 @@ const Card = ({ characterInfo }: IrickAndMortyCharacter) => {
             <MainInfo
               image={image}
               name={name}
+              location={location}
               species={species}
-              type={type}
             />
           )}
 

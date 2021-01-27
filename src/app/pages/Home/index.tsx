@@ -29,8 +29,6 @@ const Home = () => {
 
   const rowsWithContent: any = resultsReady && chunk(results, 3);
 
-  console.log('sei qua', rowsWithContent);
-
   return (
     <>
       {
