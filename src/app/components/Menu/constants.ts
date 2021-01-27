@@ -11,6 +11,11 @@ const MenuVoices = {
     value: 'curiosity',
     text: 'Curiosità',
   },
+  about: {
+    regexp: new RegExp('/about'),
+    value: 'about',
+    text: 'About',
+  },
 };
 
 export default MenuVoices;

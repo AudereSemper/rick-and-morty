@@ -2,6 +2,7 @@ import React from 'react';
 import Home from 'src/app/pages/Home';
 import Header from 'src/app/components/Header';
 import Curiosity from 'src/app/pages/Curiosity';
+import About from 'src/app/pages/About';
 import { Switch, Route, Redirect } from 'react-router';
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         </Route>
         <Route exact path="/curiosity">
           <Curiosity />
+        </Route>
+        <Route exact path="/about">
+          <About />
         </Route>
       </Switch>
     </>
