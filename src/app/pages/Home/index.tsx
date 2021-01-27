@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ReactPaginate from 'react-paginate';
 import List from 'src/app/components/List';
@@ -8,7 +8,11 @@ import {
   StyledListContainer,
   StyledRow,
 } from './styles';
-import { startFetchingRickAndMortyCharacter, setIsLoadingStatus } from './homeReducer';
+import {
+  startFetchingRickAndMortyCharacter,
+  setIsLoadingStatus,
+  startFetchingRickAndMortyCharacterWithPage,
+} from './homeReducer';
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -29,6 +33,19 @@ const Home = () => {
 
   const rowsWithContent: any = resultsReady && chunk(results, 3);
 
+  const changePage = useCallback(
+    (values) => {
+      const { selected } = values;
+      dispatch(startFetchingRickAndMortyCharacterWithPage(selected));
+    },
+    [],
+  );
+
+  console.log('sei qua', resultsReady);
+  console.log('sei qua', isLoading);
+  console.log('sei qua', rickAndMortyCharacterData.info && rickAndMortyCharacterData.results);
+  console.log('sei qua', resultsReady);
+
   return (
     <>
       {
@@ -39,7 +56,7 @@ const Home = () => {
                 {
                   resultsReady ? rowsWithContent.map(
                     (singleRow) => (
-                      <StyledRow>
+                      <StyledRow key={singleRow[0].name}>
                         <List list={singleRow} />
                       </StyledRow>
                     ),
@@ -55,7 +72,7 @@ const Home = () => {
                   pageCount={pages}
                   marginPagesDisplayed={2}
                   pageRangeDisplayed={5}
-                  // onPageChange={this.handlePageClick}
+                  onPageChange={changePage}
                   containerClassName="pagination"
                   subContainerClassName="pages pagination"
                   activeClassName="active"

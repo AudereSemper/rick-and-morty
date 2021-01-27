@@ -5,16 +5,22 @@ interface HomeState {
   loading: boolean;
   isFetching: boolean;
   data: [];
+  page: string;
   locationId: string | null;
   location: [];
+  episodeId: string,
+  episode: any,
 }
 
 const initialState: HomeState = {
   loading: false,
   isFetching: true,
+  page: '',
   data: [],
   locationId: '',
   location: [],
+  episodeId: '',
+  episode: [],
 };
 
 export const homeSlice = createSlice({
@@ -25,6 +31,9 @@ export const homeSlice = createSlice({
       state.loading = action.payload;
     },
     startFetchingRickAndMortyCharacter: (state) => state,
+    startFetchingRickAndMortyCharacterWithPage: (state, action: PayloadAction<string>) => {
+      state.page = action.payload;
+    },
     setRickAndMortyCharacterData: (state, action: PayloadAction<any>) => {
       state.data = action.payload;
     },
@@ -34,15 +43,28 @@ export const homeSlice = createSlice({
     setRickAndMortyCharacterLocation: (state, action: PayloadAction<any>) => {
       state.location = action.payload;
     },
+    startFetchingRickAndMortyEpisode: (state, action: PayloadAction<string>) => {
+      state.episodeId = action.payload;
+    },
+    setRickAndMortyCharacterEpisode: (state, action: PayloadAction<any>) => {
+      state.episode.push(action.payload);
+    },
+    resetEpisodeReducer: (state) => {
+      state.episode = [];
+    },
   },
 });
 
 export const {
   setRickAndMortyCharacterData,
   startFetchingRickAndMortyCharacter,
+  startFetchingRickAndMortyCharacterWithPage,
   setIsLoadingStatus,
+  resetEpisodeReducer,
   startFetchingRickAndMortyLocation,
   setRickAndMortyCharacterLocation,
+  startFetchingRickAndMortyEpisode,
+  setRickAndMortyCharacterEpisode,
 } = homeSlice.actions;
 
 export default homeSlice.reducer;

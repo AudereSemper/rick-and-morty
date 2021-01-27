@@ -9,7 +9,7 @@ export function fetchWrapper(endpoint) {
     },
   };
   return window
-    .fetch(`${process.env.REACT_APP_API_URL}/${endpoint}`, config)
+    .fetch(`${process.env.REACT_APP_API_URL}${endpoint}`, config)
     .then(async (response) => {
       const data = await response.json();
       if (response.ok) {

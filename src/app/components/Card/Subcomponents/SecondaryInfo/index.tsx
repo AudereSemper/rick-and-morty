@@ -1,7 +1,11 @@
-import React from 'react';
-import { useSelector } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import ReactTooltip from 'react-tooltip';
+import { startFetchingRickAndMortyEpisode, resetEpisodeReducer } from 'src/app/pages/Home/homeReducer';
 import {
   SubTitle,
+  StyledUnorderedList,
+  StyledListItem,
 } from '../../styles';
 
 const SecondaryInfo = ({
@@ -11,7 +15,19 @@ const SecondaryInfo = ({
   episode,
 }) => {
   const isDarkTheme = useSelector((state: any) => state.themeSliceReducer.theme) === 'dark';
-  console.log('sei qua', origin, episode);
+  const dispatch = useDispatch();
+  const episodes = useSelector((state: any) => state.homeSliceReducer.episode);
+
+  useEffect(() => {
+    dispatch(resetEpisodeReducer());
+    episode.forEach(
+      (singleEpisode) => {
+        const url = singleEpisode.substring(singleEpisode.lastIndexOf('/') + 1);
+        dispatch(startFetchingRickAndMortyEpisode(url));
+      },
+    );
+  }, [dispatch]);
+
   return (
     <>
       <SubTitle isDarkTheme={isDarkTheme}>
@@ -29,10 +45,15 @@ const SecondaryInfo = ({
         {' '}
         {origin.name}
       </SubTitle>
-      {/* <SubTitle isDarkTheme={isDarkTheme}>
-        {episode}
-      </SubTitle> */}
-      {' '}
+      <SubTitle isDarkTheme={isDarkTheme} data-tip data-for="registerTip" isBold>
+        Hover here for episode
+      </SubTitle>
+
+      <ReactTooltip id="registerTip" place="top" effect="solid">
+        <StyledUnorderedList>
+          {episodes && episodes.map((episodeInfo) => <StyledListItem key={episodeInfo.id}>{episodeInfo.name}</StyledListItem>)}
+        </StyledUnorderedList>
+      </ReactTooltip>
     </>
   );
 };

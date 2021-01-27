@@ -57,3 +57,10 @@ export const MoreInfo = styled.button<{isDarkTheme: boolean}>`
   border: ${({ isDarkTheme }) => (isDarkTheme ? '1px solid white' : '1px solid black')};
   color: ${({ isDarkTheme }) => (isDarkTheme ? 'white' : 'black')};
 `;
+
+export const StyledUnorderedList = styled.ul`
+  list-style-type:none;
+`;
+
+export const StyledListItem = styled.li`
+`;
