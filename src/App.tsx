@@ -1,14 +1,27 @@
 import React from 'react';
 import Home from 'src/app/pages/Home';
-import { Switch, Route } from 'react-router';
+import Header from 'src/app/components/Header';
+import Curiosity from 'src/app/pages/Curiosity';
+import About from 'src/app/pages/About';
+import { Switch, Route, Redirect } from 'react-router';
 
 function App() {
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home />
-      </Route>
-    </Switch>
+    <>
+      <Header />
+      <Switch>
+        <Redirect exact from="/" to="home" />
+        <Route exact path="/home">
+          <Home />
+        </Route>
+        <Route exact path="/curiosity">
+          <Curiosity />
+        </Route>
+        <Route exact path="/about">
+          <About />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
