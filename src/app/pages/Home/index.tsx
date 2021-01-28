@@ -1,12 +1,14 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import List from 'src/app/components/List';
+import Loader from '../../components/Loader/index';
 import {
   StyledHomeContainer,
   StyledListContainer,
   StyledRow,
 } from './styles';
 import {
+
   startFetchingRickAndMortyCharacter,
   setIsLoadingStatus,
 } from './homeReducer';
@@ -31,7 +33,7 @@ const Home = () => {
   return (
     <>
       {
-        Loading ? 'Caricamento'
+        !Loading ? <Loader />
           : (
             <StyledHomeContainer>
               <StyledListContainer>
