@@ -33,7 +33,7 @@ const Home = () => {
   return (
     <>
       {
-        !Loading ? <Loader />
+        Loading ? <Loader />
           : (
             <StyledHomeContainer>
               <StyledListContainer>
